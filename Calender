@@ -1,0 +1,66 @@
+# jedes 4. Jahr ist Schaltjahr
+# jedes 100. Jahr ist kein Schaltjahr
+# jeder 400. Jahr ist ein Schaltjahr
+# 1.1.1900 war ein Montag
+
+
+def print_day_of_the_week(d,m,y):
+    
+    Dict_Month_Tagen=[None,31,28,31,30,31,30,31,31,30,31,30,31]
+    delta_y=y-1900
+    shalt=0
+    shalt+=(delta_y+300)//400
+    shalt+=delta_y//4
+    shalt-=delta_y//100
+    
+    tagen=(1+delta_y-shalt)*365+shalt*366
+    
+    if y%400==0:
+        tagen-=366
+        for i in range(1,m):
+            tagen+=Dict_Month_Tagen[i]
+        if m>2:
+            tagen+=1
+    elif y%100==0:
+        tagen-=365
+        for i in range(1,m):
+            tagen+=Dict_Month_Tagen[i]
+    elif y%4==0:
+        tagen-=366
+        for i in range(1,m):
+            tagen+=Dict_Month_Tagen[i]
+        if m>2:
+            tagen+=1
+        
+    else:
+        tagen-=365
+        for i in range(1,m):
+            tagen+=Dict_Month_Tagen[i]
+    tagen+=d
+    tagen-=1
+    
+    wie_viele_tagen_im_Woche=tagen%7
+    
+    if wie_viele_tagen_im_Woche==1:
+        print("Dienstag")
+    elif wie_viele_tagen_im_Woche==2:
+        print("Mittwoch")
+    if wie_viele_tagen_im_Woche==3:
+        print("Donnerstag")
+    if wie_viele_tagen_im_Woche==4:
+        print("Freitag")
+    if wie_viele_tagen_im_Woche==5:
+        print("Samstag")
+    if wie_viele_tagen_im_Woche==6:
+        print("Sonntag")
+    if wie_viele_tagen_im_Woche==0:
+        print("Montag")
+        
+
+    
+    
+
+    
+    
+    
+    
